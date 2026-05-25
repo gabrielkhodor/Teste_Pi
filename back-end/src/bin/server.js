@@ -1,66 +1,38 @@
 #!/usr/bin/env node
+const http = require('http');
+const app = require('../app');
 
-/**
- * Module dependencies.
- */
+const port = normalizePort(process.env.PORT || 3000);
 
-import app from '../app.js';
-import chalk from 'chalk';
-import { createServer } from 'http';
-
-/**
- * Get port from environment and store in Express.
- */
-
-const port = normalizePort(process.env.PORT || '8888');
 app.set('port', port);
 
-/**
- * Create HTTP server.
- */
-
-const server = createServer(app);
-
-/**
- * Listen on provided port, on all network interfaces.
- */
+const server = http.createServer(app);
 
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 
-/**
- * Normalize a port into a number, string, or false.
- */
-
 function normalizePort(val) {
-  let port = parseInt(val, 10);
+  const normalizedPort = parseInt(val, 10);
 
-  if (isNaN(port)) {
-    // named pipe
+  if (Number.isNaN(normalizedPort)) {
     return val;
   }
 
-  if (port >= 0) {
-    // port number
-    return port;
+  if (normalizedPort >= 0) {
+    return normalizedPort;
   }
 
   return false;
 }
-
-/**
- * Event listener for HTTP server "error" event.
- */
 
 function onError(error) {
   if (error.syscall !== 'listen') {
     throw error;
   }
 
-  let bind = typeof port === 'string' ? `Pipe ${port}` : `Port ${port}`;
+  const bind = typeof port === 'string' ? `Pipe ${port}` : `Port ${port}`;
 
-  // handle specific listen errors with friendly messages
   switch (error.code) {
     case 'EACCES':
       console.error(`${bind} requires elevated privileges.`);
@@ -75,12 +47,9 @@ function onError(error) {
   }
 }
 
-/**
- * Event listener for HTTP server "listening" event.
- */
-
 function onListening() {
-  let addr = server.address();
-  let bind = typeof addr === 'string' ? `pipe  ${addr}` : `port ${addr.port}`;
-  console.log(chalk.cyan(`Listening on ${bind}.`));
+  const addr = server.address();
+  const bind = typeof addr === 'string' ? `pipe ${addr}` : `port ${addr.port}`;
+
+  console.log(`Listening on ${bind}.`);
 }

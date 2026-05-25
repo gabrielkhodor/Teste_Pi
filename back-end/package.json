@@ -1,17 +1,29 @@
 {
-    "name": "back-end",
-    "version": "1.0.0",
-    "description": "API Express inicial",
-    "main": "src/bin/server.js",
-    "type": "commonjs",
-    "scripts": {
-        "start": "node src/bin/server.js",
-        "dev": "node src/bin/server.js"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-        "express": "^4.21.2"
-    }
+  "name": "back-end",
+  "version": "1.0.0",
+  "description": "AcademyFlow back-end server",
+  "main": "src/bin/server.js",
+  "scripts": {
+    "start": "node src/bin/server.js",
+    "dev": "node src/bin/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2",
+    "@prisma/client": "^6.12.0",
+    "bcryptjs": "^3.0.3",
+    "dotenv": "^17.3.1",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^9.39.0",
+    "mocha": "^10.2.0",
+    "nodemon": "^3.1.10",
+    "prettier": "^3.6.2",
+    "prisma": "^6.12.0",
+    "supertest": "^6.3.3"
+  },
+  "type": "module"
 }

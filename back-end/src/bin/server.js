@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-<<<<<<< HEAD
 
 const http = require('http');
 const app = require('../app');
@@ -55,8 +54,6 @@ function onListening() {
 
   console.log(`Listening on ${bind}.`);
 }#!/usr/bin/env node
-=======
->>>>>>> f0de99d0f701eaed4da91bd9c7983749857cf61e
 const http = require('http');
 const app = require('../app');
 

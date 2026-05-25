@@ -2,19 +2,11 @@
     "name": "back-end",
     "version": "1.0.0",
     "description": "API Express inicial",
-<<<<<<< HEAD
     "main": "src/bin/server.js",
     "type": "commonjs",
     "scripts": {
         "start": "node src/bin/server.js",
         "dev": "node src/bin/server.js"
-=======
-    "main": "src/server.js",
-    "type": "commonjs",
-    "scripts": {
-        "start": "node src/bin/server.js",
-        "dev": "node --watch src/bin/server.js"
->>>>>>> f0de99d0f701eaed4da91bd9c7983749857cf61e
     },
     "keywords": [],
     "author": "",

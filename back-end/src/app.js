@@ -1,34 +1,22 @@
-const express = require('express');
+import express, { json, urlencoded } from 'express'; // Importar o framework Express e middlewares para parsear JSON e dados de formulário
+import cookieParser from 'cookie-parser'; // Middleware para parsear cookies
+import logger from 'morgan'; // Middleware para log de requisições HTTP
+import cors from 'cors';
 
-const app = express();
+import usersRouter from './routes/users.js';
+
+const app = express(); // Criar a aplicação Express
 
 app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.json({
-    message: 'API Express funcionando',
-    version: 'v1',
-  });
-});
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
 
-app.get('/api/v1/health', (req, res) => {
-  res.json({
-    status: 'ok',
-  });
-});
+// Servir arquivos estáticos da pasta uploads (corrigido: __dirname definido antes do uso)
+import path from 'path';
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-app.use((req, res) => {
-  res.status(404).json({
-    error: 'Rota não encontrada',
-  });
-});
 
-app.use((error, req, res, next) => {
-  console.error(error);
-
-  res.status(500).json({
-    error: 'Erro interno do servidor',
-  });
-});
-
-module.exports = app;
+export default app; // Exportar a aplicação para ser usada em outros arquivos (como o servidor)

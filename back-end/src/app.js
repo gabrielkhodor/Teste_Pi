@@ -1,4 +1,8 @@
 const express = require('express');
+<<<<<<< HEAD
+=======
+const apiRouter = require('./routes');
+>>>>>>> f0de99d0f701eaed4da91bd9c7983749857cf61e
 
 const app = express();
 
@@ -11,11 +15,15 @@ app.get('/', (req, res) => {
   });
 });
 
+<<<<<<< HEAD
 app.get('/api/v1/health', (req, res) => {
   res.json({
     status: 'ok',
   });
 });
+=======
+app.use('/api/v1', apiRouter);
+>>>>>>> f0de99d0f701eaed4da91bd9c7983749857cf61e
 
 app.use((req, res) => {
   res.status(404).json({
